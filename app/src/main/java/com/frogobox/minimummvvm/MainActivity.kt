@@ -8,6 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.frogobox.minimummvvm.databinding.ActivityMainBinding
+import com.frogobox.minimummvvm.model.Article
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -33,7 +34,7 @@ class MainActivity : AppCompatActivity(), MainItemListener {
         }
     }
 
-    private fun setupRV(it: MutableList<MainData>) {
+    private fun setupRV(it: MutableList<Article>) {
         mainAdapter.setContent(it)
         binding.rvFrogo.apply {
             adapter = mainAdapter
@@ -42,7 +43,7 @@ class MainActivity : AppCompatActivity(), MainItemListener {
         }
     }
 
-    override fun onClickListener(data: MainData) {
+    override fun onClickListener(data: Article) {
         Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show()
     }
 

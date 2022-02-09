@@ -3,6 +3,7 @@ package com.frogobox.minimummvvm
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.frogobox.minimummvvm.model.Article
 
 
 /*
@@ -20,14 +21,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MainAdapter(private val listener: MainItemListener) : RecyclerView.Adapter<MainHolder>(){
 
-    private val listData = mutableListOf<MainData>()
+    private val listData = mutableListOf<Article>()
 
-    fun setContent(data: List<MainData>) {
+    fun setContent(data: List<Article>) {
         listData.clear()
         listData.addAll(data)
     }
 
-    fun notifyInserted(data: MainData, position: Int) {
+    fun notifyInserted(data: Article, position: Int) {
         listData.add(position, data)
         notifyItemInserted(position)
     }

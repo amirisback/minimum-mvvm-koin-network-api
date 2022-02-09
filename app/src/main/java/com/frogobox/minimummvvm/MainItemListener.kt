@@ -1,6 +1,7 @@
 package com.frogobox.minimummvvm
 
 import com.frogobox.minimummvvm.MainData
+import com.frogobox.minimummvvm.model.Article
 
 
 /*
@@ -18,6 +19,6 @@ import com.frogobox.minimummvvm.MainData
 
 interface MainItemListener {
 
-    fun onClickListener(data: MainData)
+    fun onClickListener(data: Article)
 
 }

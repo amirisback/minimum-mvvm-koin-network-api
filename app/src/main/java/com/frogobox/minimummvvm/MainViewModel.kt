@@ -1,14 +1,14 @@
 package com.frogobox.minimummvvm
 
 import android.app.Application
-import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
-import com.frogobox.minimummvvm.MainAdapter
-import com.frogobox.minimummvvm.MainData
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import com.frogobox.minimummvvm.model.Article
+import com.frogobox.minimummvvm.model.ArticleResponse
+import com.frogobox.minimummvvm.sources.ApiResponse
+import com.frogobox.minimummvvm.sources.NewsRepository
+import com.frogobox.minimummvvm.util.NewsConstant
+import com.frogobox.minimummvvm.util.NewsUrl
 
 /*
  * Created by faisalamir on 08/02/22
@@ -23,23 +23,45 @@ import kotlinx.coroutines.launch
  *
  */
 
-class MainViewModel(application: Application) : AndroidViewModel(application) {
+class MainViewModel(application: Application, private val repository: NewsRepository) :
+    AndroidViewModel(application) {
 
-    private val data = mutableListOf<MainData>()
-    val listMainData = MutableLiveData<MutableList<MainData>>()
+    private val tempData = mutableListOf<Article>()
+    val listMainData = MutableLiveData<MutableList<Article>>()
 
     fun setupData() {
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        data.add(MainData("Faisal Amir", 24))
-        listMainData.postValue(data)
+        repository.getEverythings(
+            NewsUrl.API_KEY,
+            "Teknologi",
+            null,
+            null,
+            NewsConstant.COUNTRY_ID,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            object : ApiResponse.DataResponse<ArticleResponse> {
+                override fun onShowProgress() {
+                }
+
+                override fun onHideProgress() {
+                }
+
+                override fun onEmpty() {
+                }
+
+                override fun onSuccess(data: ArticleResponse) {
+                    data.articles?.let { tempData.addAll(it) }
+                    listMainData.postValue(tempData)
+                }
+
+                override fun onFailed(statusCode: Int, errorMessage: String?) {
+                }
+            })
+
     }
 
 }

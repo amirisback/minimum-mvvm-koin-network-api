@@ -1,6 +1,8 @@
 package com.frogobox.minimummvvm
 
+import com.frogobox.minimummvvm.sources.NewsRepository
 import org.koin.android.ext.koin.androidApplication
+import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,10 +20,20 @@ import org.koin.dsl.module
  *
  */
 
+val repositoryModule = module {
+
+    single {
+        NewsRepository
+    }
+
+    // Please Add Your Code Under This Line --------------------------------------------------------
+
+}
+
 val viewModelModule = module {
 
     viewModel {
-        MainViewModel(androidApplication())
+        MainViewModel(androidApplication(), get())
     }
 
     // Please Add Your Code Under This Line --------------------------------------------------------
