@@ -5,7 +5,24 @@
 - Lifecycle
 
 ## Result
-<img width="200px" height="360px" src="https://raw.githubusercontent.com/amirisback/minimum-mvvm/master/docs/image/ss.png">
+
+<table>
+
+<tr>
+    <th>ScreenShot 1</th>
+    <th>ScreenShot 2</th>
+</tr>
+
+<tr>
+    <td><img width="200px" height="360px" src="https://raw.githubusercontent.com/amirisback/minimum-mvvm/master/docs/image/ss_1.png"></td>
+    <td><img width="200px" height="360px" src="https://raw.githubusercontent.com/amirisback/minimum-mvvm/master/docs/image/ss_2.png"></td>
+</tr>
+
+</table>
+
+## Run Apps
+
+![ScreenShot](https://raw.githubusercontent.com/amirisback/minimum-mvvm-network-api/master/docs/image/ss_full.png?raw=true)
 
 ## Colaborator
 Very open to anyone, I'll write your name under this, please contribute by sending an email to me
