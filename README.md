@@ -3,6 +3,10 @@
 - Coroutines
 - View Model
 - Lifecycle
+- [News API](https://newsapi.org/)
+- Retrofit
+- Rx Java Rx Android
+- OkHttp Client
 
 ## Result
 
